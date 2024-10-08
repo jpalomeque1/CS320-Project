@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import './App.css';  // Import your CSS file
+import './App.css'; // Import your CSS file
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   // useState for first name, last name, and message
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // Use useNavigate for page navigation
 
   // Function to handle form submission and fetch the message
   const handleSubmit = async (event) => {
@@ -13,18 +15,23 @@ function App() {
     const response = await fetch('/hello/personalized', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ first: firstName, last: lastName })
+      body: JSON.stringify({ first: firstName, last: lastName }),
     });
 
     const text = await response.text();
     setMessage(text);
   };
 
+  // Function to navigate to Page 2
+  const navigateToPage2 = () => {
+    navigate('/page2');
+  };
+
   return (
       <div className="app-container">
-        <h1>Personalized  Greeting</h1>
+        <h1>Personalized Greeting</h1>
 
         <form onSubmit={handleSubmit} className="greeting-form">
           <input
@@ -45,9 +52,12 @@ function App() {
         </form>
 
         <p>{message}</p>
+
+        <div>
+          <button onClick={navigateToPage2}>Page 2</button>
+        </div>
       </div>
   );
 }
 
 export default App;
-
