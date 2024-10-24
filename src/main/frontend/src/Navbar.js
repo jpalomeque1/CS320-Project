@@ -8,7 +8,9 @@ const Navbar = () => {
                 <Link to="/">Home </Link>
                 {/* just for spacing */}
                 <span></span>
-                <Link to="/page2">Page 2</Link>
+                <Link to="/DIY">DIY</Link>
+                <span></span>
+                <Link to="/Log">Log</Link>
             </div>
         </nav>
     )
