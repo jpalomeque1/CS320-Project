@@ -5,7 +5,10 @@ import App from './App';
 import DIY from './DIY';
 import Navbar from "./Navbar";
 import Log from "./Log";
+import Header from "./Header";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NotFound from "./NotFound";
+import Footer from "./Foooter";
 
 
 
@@ -15,12 +18,14 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Navbar/>
+            <Header/>
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/diy" element={<DIY />} />
                 <Route path="/log" element={<Log />} />
-                {/* You can add more pages by adding more Route elements here! */}
+                <Route path="*" element={<NotFound />} /> {/* Handle unknown routes */}
             </Routes>
+            <Footer/>
         </BrowserRouter>
     </React.StrictMode>
 );

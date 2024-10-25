@@ -1,0 +1,62 @@
+.footer-container {
+    background-color: #2d2d2d; /* Dark background */
+    color: white;
+    padding: 100px; /* Padding */
+}
+
+.footer-content {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Center items vertically */
+}
+
+.footer-icon {
+    flex: 1;
+}
+
+.footer-icon-image {
+    width: 180px;
+    height: 180px;
+}
+
+.footer-links {
+    flex: 2; /* Links area */
+    display: flex;
+    flex-direction: column; /* Vertical stacking of rows */
+}
+
+.footer-links-row {
+    display: flex; /* Flexbox for link row */
+    justify-content: space-between; /* Space links evenly */
+    margin-bottom: 10px; /* Space between rows */
+}
+
+.footer-link {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth transition for hover */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.footer-social {
+    flex: 1; /* Social area */
+    text-align: center; /* Center text */
+}
+
+.footer-social-text {
+    margin-bottom: 40px; /* Space below text */
+}
+
+.footer-social-icons {
+    display: grid; /* Grid layout for social icons */
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+    gap: 10px; /* Space between icons */
+}
+
+.social-icon {
+    width: 80px; /* Icon size */
+    height: 80px;
+}

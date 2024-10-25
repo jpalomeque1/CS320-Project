@@ -1,3 +1,7 @@
+import Navbar from "./Navbar";
+import header from "./Header";
+
+
 function DIY() {
    return(
        <div>

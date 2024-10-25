@@ -1,0 +1,28 @@
+
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Center the navbar */
+    align-items: center;
+    height: 80px; /* Adjust as needed */
+    background-color: #f0f0f0; /* Optional background color for the navbar */
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Add spacing between the buttons */
+}
+
+.nav-button {
+    text-decoration: none; /* Remove underline */
+    background-color: navy; /* Navy blue background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding for oval shape */
+    border-radius: 20px; /* Make the buttons oval */
+    font-size: 16px; /* Adjust font size if needed */
+    transition: background-color 0.3s; /* Optional transition for hover effect */
+}
+
+.nav-button:hover {
+    background-color: #003366; /* Darker navy on hover */
+}

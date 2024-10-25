@@ -1,0 +1,23 @@
+/* Header.css */
+.header-container {
+    position: relative; /* Allows absolute positioning of child elements */
+    width: 100%; /* Make the container span the full width */
+    height: auto; /* Adjusts height based on content */
+}
+
+.header-text {
+    position: absolute; /* Position the text absolutely within the container */
+    top: 50%; /* Center the text vertically */
+    left: 50%; /* Center the text horizontally */
+    transform: translate(-50%, -50%); /* Adjust positioning to truly center */
+    color: white; /* Change the text color for better visibility */
+    font-size: 5rem; /* Adjust font size as needed */
+    font-weight: bold;
+    z-index: 1; /* Ensure text is on top of the image */
+}
+
+.header-image {
+    width: 100%; /* Make the image span the full width */
+    height: 400px; /* Maintain aspect ratio */
+    display: block; /* Prevent any extra spacing issues */
+}
