@@ -8,85 +8,39 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/hello")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class GreetingResource {
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello RESTEasy";
-    }
-
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
-    @Path("/personalized/{name}")
-    @Transactional
-    public String helloPersonalized(@PathParam("name") String name) {
-        UserName username = new UserName(name);
-        username.persist();
-        return "Hello " + name + "! Your name has been stored in the database.";
-    }
-
-    @POST
-    @Produces(MediaType.TEXT_PLAIN)
     @Path("/personalized")
-    public String helloPersonalizedPost(Person one) {
-        return "Hello " + one.getFirst() + " " + one.getLast();
-    }
-
-    // READ: Get a list of all names
-    @GET
-    @Path("/names")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<UserName> getAllNames() {
-        return UserName.listAll(); // Assuming you have a method to list all usernames
-    }
-
-    // READ: Get a specific name by ID
-    @GET
-    @Path("/names/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getNameById(@PathParam("id") Long id) {
-        UserName username = UserName.findById(id);
-        if (username == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        return Response.ok(username).build();
-    }
-
-    // UPDATE: Update a name by ID
-    @PATCH
-    @Path("/names/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response updateName(@PathParam("id") Long id, UserName updatedName) {
-        UserName username = UserName.findById(id);
-        if (username == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+    public Response helloPersonalizedPost(Person person) {
+        // Validate first and last names
+        if (person.getFirst() == null || person.getFirst().isEmpty()) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("First name is required.").build();
         }
-        username.setName(updatedName.getName()); // Ensure this method exists in UserName
-        username.persist(); // Persist the changes
-        return Response.ok(username).build();
+        if (person.getLast() == null || person.getLast().isEmpty()) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Last name is required.").build();
+        }
+
+        // Validate email format
+        if (person.getEmail() == null || !person.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid email address.").build();
+        }
+
+        // Successful response
+        String responseMessage = "Hello " + person.getFirst() + " " + person.getLast() + "! You have been added to our email list.";
+        return Response.ok(responseMessage).build();
     }
 
-    // DELETE: Remove a name by ID
-    @DELETE
-    @Path("/names/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
-    public Response deleteName(@PathParam("id") Long id) {
-        UserName username = UserName.findById(id);
-        if (username == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        username.delete(); // Delete the entity
-        return Response.noContent().build(); // Return 204 No Content
-    }
+    // Other endpoints as in your original file...
 
     // Person class as an inner class
     public static class Person {
         private String first;
         private String last;
+        private String email;
 
         // Getters and Setters
         public String getFirst() {
@@ -103,6 +57,14 @@ public class GreetingResource {
 
         public void setLast(String last) {
             this.last = last;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
         }
     }
 }

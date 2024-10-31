@@ -1,0 +1,30 @@
+.tools-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center; /* Keep this to center the grid items */
+}
+
+.tool-item {
+    width: 200px; /* Keep as is for item width */
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin: auto; /* Center the item within its grid cell */
+}
+
+.tool-image {
+    width: 200%; /* Change this to 200% to make the images twice as large */
+    height: auto; /* Maintain aspect ratio */
+    border: 2px solid black; /* Regular border for structure */
+    border-radius: 4px; /* Keep rounded corners for the image */
+    display: block; /* Ensures proper centering of images */
+    margin: 0 auto; /* Center the image */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inset shadow for the inset border effect */
+}
+
+.tool-link {
+    color: black;
+    text-decoration: unset underline;
+    font-size: 2em;
+}
