@@ -1,7 +1,10 @@
 import React from 'react';
 import './DIY.css';
+import {useNavigate} from 'react-router-dom';
 
 function DIY() {
+    const navigate = useNavigate();
+
     return (
         <div className="diy-container">
             <h1>Page 2 "In Progress"</h1>
@@ -18,6 +21,7 @@ function DIY() {
                 ></iframe>
 
             </div>
+            <button onClick={() => navigate('/account')}>Login</button>
             <div className="maintenance-log">
                 <div className="log-template">
                     <h2>Car Maintenance Log Template</h2>
@@ -32,52 +36,100 @@ function DIY() {
                         </thead>
                         <tbody>
                         <tr>
-                            <td></td><td></td><td>Oil Change</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Oil Change</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Tire Rotation</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Tire Rotation</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Brake Inspection</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Brake Inspection</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Battery Check</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Battery Check</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Air Filter Replacement</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Air Filter Replacement</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Coolant Level Check</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Coolant Level Check</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Transmission Fluid</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Transmission Fluid</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Spark Plug Replacement</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Spark Plug Replacement</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Timing Belt</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Timing Belt</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Wiper Blade Replacement</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Wiper Blade Replacement</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Lights Inspection</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Lights Inspection</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Fluid Levels</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Fluid Levels</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Suspension & Steering Check</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Suspension & Steering Check</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Exhaust System Check</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Exhaust System Check</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Alignment Check</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Alignment Check</td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td><td></td><td>Fuel System Cleaning</td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Fuel System Cleaning</td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>

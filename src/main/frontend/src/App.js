@@ -1,42 +1,38 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.css'; // Import your CSS file
 
 function App() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
 
-    // Email validation function
-    const validateEmail = (email) => {
-        const emailRegex = /^[A-Za-z0-9+_.-]+@(.+)$/;
-        return emailRegex.test(email);
-    };
+    // Validation for letters only in names and proper email format
+    const namePattern = /^[A-Za-z]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         // Frontend validation
-        if (!firstName || !lastName || !validateEmail(email)) {
-            setError("All fields are required and email must be valid.");
+        if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+            setMessage('First and last names should contain letters only.');
             return;
         }
-        setError(''); // Clear any previous error message
+
+        if (!emailPattern.test(email)) {
+            setMessage('Please enter a valid email.');
+            return;
+        }
 
         try {
-            const response = await fetch('http://localhost:8080/hello/personalized', {
+            const response = await fetch('/hello/personalized', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ first: firstName, last: lastName, email }),
             });
 
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(errorText);
-            }
+            if (!response.ok) throw new Error('Failed to process request');
 
             const text = await response.text();
             setMessage(text);
@@ -74,7 +70,6 @@ function App() {
                 <button type="submit">Submit</button>
             </form>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>}
             <p>{message}</p>
         </div>
     );

@@ -9,6 +9,7 @@ import Header from "./Header";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NotFound from "./NotFound";
 import Footer from "./Foooter"
+import Account from "./account";
 
 
 
@@ -23,6 +24,7 @@ root.render(
                 <Route path="/" element={<App />} />
                 <Route path="/diy" element={<DIY />} />
                 <Route path="/tools" element={<Tools />} />
+                <Route path="/account" element={<Account/>} />
                 <Route path="*" element={<NotFound />} /> {/* Handle unknown routes */}
             </Routes>
             <Footer/>
