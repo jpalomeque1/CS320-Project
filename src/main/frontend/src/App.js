@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css'; // Import your CSS file
+import {API_URL} from "./config";
 
 function App() {
     const [firstName, setFirstName] = useState('');
@@ -26,7 +27,7 @@ function App() {
         }
 
         try {
-            const response = await fetch('/hello/personalized', {
+            const response = await fetch(`${API_URL}/hello/personalized`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ first: firstName, last: lastName, email }),
